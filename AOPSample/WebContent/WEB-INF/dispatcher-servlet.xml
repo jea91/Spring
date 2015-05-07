@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:p="http://www.springframework.org/schema/p"
+	xmlns:context="http://www.springframework.org/schema/context"
+	xmlns:aop="http://www.springframework.org/schema/aop" xmlns:tx="http://www.springframework.org/schema/tx"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans
+ http://www.springframework.org/schema/beans/spring-beans-3.0.xsd
+ http://www.springframework.org/schema/context
+ http://www.springframework.org/schema/context/spring-context-3.0.xsd
+ http://www.springframework.org/schema/aop
+ http://www.springframework.org/schema/aop/spring-aop-3.0.xsd
+ http://www.springframework.org/schema/tx
+ http://www.springframework.org/schema/tx/spring-tx-3.0.xsd">
+
+	<!-- controller -->
+	<bean name="helloController" class="com.spring.controller.HelloController">
+		<property name="service" ref="service" />
+	</bean>
+
+	<!-- service -->
+	<bean name="service" class="com.spring.service.ServiceImpl" />
+
+	<!-- AOP -->
+	<bean id="aopTest" class="com.spring.aop.AOPTest" />
+
+	<aop:config>
+		<aop:pointcut id="publicmethod"
+			expression="execution(public * com.spring.service..*(..))" />
+		<aop:aspect id="aopAspect" ref="aopTest">
+			<aop:before pointcut-ref="publicmethod" method="beforeMethod" />
+			<aop:after pointcut-ref="publicmethod" method="afterMethod" />
+		</aop:aspect>
+	</aop:config>
+
+	<!-- viewResolver -->
+	<bean id="viewResolver"
+		class="org.springframework.web.servlet.view.InternalResourceViewResolver">
+		<property name="prefix" value="/jsp/">
+		</property>
+		<property name="suffix" value=".jsp">
+		</property>
+	</bean>
+
+</beans>
