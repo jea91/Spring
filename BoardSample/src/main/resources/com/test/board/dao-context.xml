@@ -18,7 +18,7 @@
 		<property name="driverClassName" value="com.mysql.jdbc.Driver" />
 		<property name="url" value="jdbc:mysql://localhost:3306/board" />
 		<property name="username" value="root" /> <!-- 이부분 자신의 계정에 맞게 수정 -->
-		<property name="password" value="0124" />
+		<property name="password" value="0000" />
 	</bean>
 
 	<!-- # iBatis setting# -->
