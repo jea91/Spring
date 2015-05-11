@@ -1,6 +1,8 @@
-package com.test.board;
+package com.test.board.service;
 
 import java.util.Map;
+
+import com.test.board.vo.Board;
 
 public interface BoardService {
 	

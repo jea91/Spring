@@ -1,11 +1,13 @@
-package com.test.board;
+package com.test.board.service;
 
 import java.util.Map;
- 
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.orm.ibatis.SqlMapClientTemplate;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
+
+import com.test.board.vo.Board;
 
 @Service 
 @Transactional

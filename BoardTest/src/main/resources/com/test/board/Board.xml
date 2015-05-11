@@ -3,19 +3,19 @@
     PUBLIC "-//ibatis.apache.org//DTD SQL Map 2.0//EN"
     "http://ibatis.apache.org/dtd/sql-map-2.dtd">
 <sqlMap namespace="board_query">
-	<typeAlias alias="board" type="com.test.board.Board" />
+	<typeAlias alias="board" type="com.test.board.vo.Board" />
 	<select id="list" resultClass="hashmap">
 	 <![CDATA[ SELECT * FROM board ]]></select>
-	 
+
 	<select id="select" parameterClass="String" resultClass="board"> 
 	 <![CDATA[ select board.seq,board.subject,board.content from board where board.seq=#seq#]]></select>
-	 
+
 	<insert id="insert" parameterClass="board"> 
 	 <![CDATA[ INSERT INTO board(subject,content) VALUES(#subject#,#content#); ]]></insert>
-	 
+
 	<delete id="delete"> 
 	 <![CDATA[ DELETE FROM board WHERE seq=#seq#]]></delete>
-	 
+
 	<update id="update">
 	<![CDATA[ update board set subject=#subject#,content=#content# where seq=#seq# ]]></update>
 </sqlMap>
